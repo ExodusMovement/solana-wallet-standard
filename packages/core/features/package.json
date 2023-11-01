@@ -8,20 +8,18 @@
         "access": "public"
     },
     "files": [
-        "lib",
-        "src",
-        "LICENSE"
+        "lib/esm",
+        "lib/types",
+        "!**/*.map"
     ],
     "engines": {
         "node": ">=16"
     },
     "type": "module",
     "sideEffects": false,
-    "main": "./lib/cjs/index.js",
     "module": "./lib/esm/index.js",
     "types": "./lib/types/index.d.ts",
     "exports": {
-        "require": "./lib/cjs/index.js",
         "import": "./lib/esm/index.js",
         "types": "./lib/types/index.d.ts"
     },
