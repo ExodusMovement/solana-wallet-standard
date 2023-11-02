@@ -20,8 +20,7 @@
     "module": "./lib/esm/index.js",
     "types": "./lib/types/index.d.ts",
     "exports": {
-        "import": "./lib/esm/index.js",
-        "types": "./lib/types/index.d.ts"
+        ".": "./lib/esm/index.js"
     },
     "scripts": {
         "clean": "shx mkdir -p lib && shx rm -rf lib",
