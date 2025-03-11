@@ -8,30 +8,28 @@
         "access": "public"
     },
     "files": [
-        "lib",
-        "src",
-        "LICENSE"
+        "lib/esm",
+        "lib/types",
+        "!**/*.map"
     ],
     "engines": {
         "node": ">=16"
     },
     "type": "module",
     "sideEffects": false,
-    "main": "./lib/cjs/index.js",
+    "main": "./lib/esm/index.js",
     "module": "./lib/esm/index.js",
     "types": "./lib/types/index.d.ts",
     "exports": {
-        "require": "./lib/cjs/index.js",
-        "import": "./lib/esm/index.js",
-        "types": "./lib/types/index.d.ts"
+        ".": "./lib/esm/index.js"
     },
     "scripts": {
         "clean": "shx mkdir -p lib && shx rm -rf lib",
         "package": "shx mkdir -p lib/cjs && shx echo '{ \"type\": \"commonjs\" }' > lib/cjs/package.json"
     },
     "dependencies": {
-        "@wallet-standard/base": "^1.1.0",
-        "@wallet-standard/features": "^1.1.0"
+        "@wallet-standard/base": "^1.0.1",
+        "@wallet-standard/features": "^1.0.3"
     },
     "devDependencies": {
         "shx": "^0.3.4"
