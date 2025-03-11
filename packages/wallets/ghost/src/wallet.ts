@@ -16,7 +16,8 @@ import {
     type SolanaSignTransactionMethod,
     type SolanaSignTransactionOutput,
 } from '@solana/wallet-standard-features';
-import { Transaction, VersionedTransaction } from '@solana/web3.js';
+import type { Transaction } from '@solana/web3.js';
+import { VersionedTransaction } from '@solana/web3.js';
 import type { Wallet } from '@wallet-standard/base';
 import {
     StandardConnect,
@@ -35,7 +36,7 @@ import bs58 from 'bs58';
 import { GhostWalletAccount } from './account.js';
 import { icon } from './icon.js';
 import type { SolanaChain } from './solana.js';
-import { isSolanaChain, SOLANA_CHAINS } from './solana.js';
+import { isSolanaChain, isVersionedTransaction, SOLANA_CHAINS } from './solana.js';
 import { bytesEqual } from './util.js';
 import type { Ghost } from './window.js';
 
@@ -151,7 +152,6 @@ export class GhostWallet implements Wallet {
     #connected = () => {
         const address = this.#ghost.publicKey?.toBase58();
         if (address) {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             const publicKey = this.#ghost.publicKey!.toBytes();
 
             const account = this.#account;
@@ -197,7 +197,6 @@ export class GhostWallet implements Wallet {
         const outputs: SolanaSignAndSendTransactionOutput[] = [];
 
         if (inputs.length === 1) {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             const { transaction, account, chain, options } = inputs[0]!;
             const { minContextSlot, preflightCommitment, skipPreflight, maxRetries } = options || {};
             if (account !== this.#account) throw new Error('invalid account');
@@ -229,14 +228,22 @@ export class GhostWallet implements Wallet {
         const outputs: SolanaSignTransactionOutput[] = [];
 
         if (inputs.length === 1) {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             const { transaction, account, chain } = inputs[0]!;
             if (account !== this.#account) throw new Error('invalid account');
             if (chain && !isSolanaChain(chain)) throw new Error('invalid chain');
 
             const signedTransaction = await this.#ghost.signTransaction(VersionedTransaction.deserialize(transaction));
 
-            outputs.push({ signedTransaction: signedTransaction.serialize() });
+            const serializedTransaction = isVersionedTransaction(signedTransaction)
+                ? signedTransaction.serialize()
+                : new Uint8Array(
+                      (signedTransaction as Transaction).serialize({
+                          requireAllSignatures: false,
+                          verifySignatures: false,
+                      })
+                  );
+
+            outputs.push({ signedTransaction: serializedTransaction });
         } else if (inputs.length > 1) {
             let chain: SolanaChain | undefined = undefined;
             for (const input of inputs) {
@@ -251,12 +258,23 @@ export class GhostWallet implements Wallet {
                 }
             }
 
-            const transactions = inputs.map(({ transaction }) => Transaction.from(transaction));
+            const transactions = inputs.map(({ transaction }) => VersionedTransaction.deserialize(transaction));
 
             const signedTransactions = await this.#ghost.signAllTransactions(transactions);
 
             outputs.push(
-                ...signedTransactions.map((signedTransaction) => ({ signedTransaction: signedTransaction.serialize() }))
+                ...signedTransactions.map((signedTransaction) => {
+                    const serializedTransaction = isVersionedTransaction(signedTransaction)
+                        ? signedTransaction.serialize()
+                        : new Uint8Array(
+                              (signedTransaction as Transaction).serialize({
+                                  requireAllSignatures: false,
+                                  verifySignatures: false,
+                              })
+                          );
+
+                    return { signedTransaction: serializedTransaction };
+                })
             );
         }
 
@@ -269,7 +287,6 @@ export class GhostWallet implements Wallet {
         const outputs: SolanaSignMessageOutput[] = [];
 
         if (inputs.length === 1) {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             const { message, account } = inputs[0]!;
             if (account !== this.#account) throw new Error('invalid account');
 
