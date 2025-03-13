@@ -28,8 +28,8 @@
     },
     "dependencies": {
         "@noble/curves": "^1.8.0",
-        "@solana/wallet-standard-chains": "workspace:^",
-        "@solana/wallet-standard-features": "workspace:^"
+        "@exodus/solana-wallet-standard-chains": "workspace:^",
+        "@exodus/solana-wallet-standard-features": "workspace:^"
     },
     "devDependencies": {
         "@types/jest": "^29.5.14",
