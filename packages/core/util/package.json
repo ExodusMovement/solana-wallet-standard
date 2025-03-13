@@ -1,6 +1,6 @@
 {
     "name": "@exodus/solana-wallet-standard-util",
-    "version": "1.1.2-exodus.2",
+    "version": "1.1.2-exodus.3",
     "author": "Solana Maintainers <maintainers@solana.foundation>",
     "repository": "https://github.com/solana-labs/wallet-standard",
     "license": "Apache-2.0",
