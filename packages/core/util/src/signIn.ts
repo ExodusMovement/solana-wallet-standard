@@ -1,4 +1,4 @@
-import type { SolanaSignInInput, SolanaSignInOutput } from '@solana/wallet-standard-features';
+import type { SolanaSignInInput, SolanaSignInOutput } from '@exodus/solana-wallet-standard-features';
 import { verifyMessageSignature } from './signMessage.js';
 import { arraysEqual } from './util.js';
 

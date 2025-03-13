@@ -1,4 +1,4 @@
-import type { SolanaTransactionCommitment } from '@solana/wallet-standard-features';
+import type { SolanaTransactionCommitment } from '@exodus/solana-wallet-standard-features';
 
 // Copied from @solana/web3.js
 type Commitment = 'processed' | 'confirmed' | 'finalized' | 'recent' | 'single' | 'singleGossip' | 'root' | 'max';
