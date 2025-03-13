@@ -81,13 +81,13 @@ importers:
 
   packages/core/_:
     dependencies:
-      '@solana/wallet-standard-chains':
+      '@exodus/solana-wallet-standard-chains':
         specifier: workspace:^
         version: link:../chains
-      '@solana/wallet-standard-features':
+      '@exodus/solana-wallet-standard-features':
         specifier: workspace:^
         version: link:../features
-      '@solana/wallet-standard-util':
+      '@exodus/solana-wallet-standard-util':
         specifier: workspace:^
         version: link:../util
     devDependencies:
@@ -120,15 +120,15 @@ importers:
 
   packages/core/util:
     dependencies:
+      '@exodus/solana-wallet-standard-chains':
+        specifier: workspace:^
+        version: link:../chains
+      '@exodus/solana-wallet-standard-features':
+        specifier: workspace:^
+        version: link:../features
       '@noble/curves':
         specifier: ^1.8.0
         version: 1.8.0
-      '@solana/wallet-standard-chains':
-        specifier: workspace:^
-        version: link:../chains
-      '@solana/wallet-standard-features':
-        specifier: workspace:^
-        version: link:../features
     devDependencies:
       '@types/jest':
         specifier: ^29.5.14
@@ -158,18 +158,18 @@ importers:
 
   packages/wallet-adapter/base:
     dependencies:
+      '@exodus/solana-wallet-standard-chains':
+        specifier: workspace:^
+        version: link:../../core/chains
+      '@exodus/solana-wallet-standard-features':
+        specifier: workspace:^
+        version: link:../../core/features
+      '@exodus/solana-wallet-standard-util':
+        specifier: workspace:^
+        version: link:../../core/util
       '@solana/wallet-adapter-base':
         specifier: ^0.9.23
         version: 0.9.23(@solana/web3.js@1.98.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))
-      '@solana/wallet-standard-chains':
-        specifier: workspace:^
-        version: link:../../core/chains
-      '@solana/wallet-standard-features':
-        specifier: workspace:^
-        version: link:../../core/features
-      '@solana/wallet-standard-util':
-        specifier: workspace:^
-        version: link:../../core/util
       '@wallet-standard/app':
         specifier: ^1.1.0
         version: 1.1.0
@@ -220,7 +220,7 @@ importers:
 
   packages/wallets/ghost:
     dependencies:
-      '@solana/wallet-standard-features':
+      '@exodus/solana-wallet-standard-features':
         specifier: workspace:^
         version: link:../../core/features
       '@solana/web3.js':
