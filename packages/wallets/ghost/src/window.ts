@@ -1,4 +1,4 @@
-import { type SolanaSignInInput, type SolanaSignInOutput } from '@solana/wallet-standard-features';
+import { type SolanaSignInInput, type SolanaSignInOutput } from '@exodus/solana-wallet-standard-features';
 import type { PublicKey, SendOptions, Transaction, TransactionSignature, VersionedTransaction } from '@solana/web3.js';
 
 export interface GhostEvent {

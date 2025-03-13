@@ -15,7 +15,7 @@ import {
     type SolanaSignTransactionFeature,
     type SolanaSignTransactionMethod,
     type SolanaSignTransactionOutput,
-} from '@solana/wallet-standard-features';
+} from '@exodus/solana-wallet-standard-features';
 import type { Transaction } from '@solana/web3.js';
 import { VersionedTransaction } from '@solana/web3.js';
 import type { Wallet } from '@wallet-standard/base';

@@ -1,4 +1,4 @@
-// This is copied from @solana/wallet-standard-chains
+// This is copied from @exodus/solana-wallet-standard-chains
 
 import type { IdentifierString } from '@wallet-standard/base';
 import type { Transaction, VersionedTransaction } from '@solana/web3.js';

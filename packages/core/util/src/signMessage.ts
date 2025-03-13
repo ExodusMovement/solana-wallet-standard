@@ -1,5 +1,5 @@
 import { ed25519 } from '@noble/curves/ed25519';
-import type { SolanaSignMessageInput, SolanaSignMessageOutput } from '@solana/wallet-standard-features';
+import type { SolanaSignMessageInput, SolanaSignMessageOutput } from '@exodus/solana-wallet-standard-features';
 import { bytesEqual } from './util.js';
 
 /**

@@ -1,5 +1,5 @@
 import { type Adapter, isVersionedTransaction, WalletReadyState } from '@solana/wallet-adapter-base';
-import { isSolanaChain, type SolanaChain } from '@solana/wallet-standard-chains';
+import { isSolanaChain, type SolanaChain } from '@exodus/solana-wallet-standard-chains';
 import {
     SolanaSignAndSendTransaction,
     type SolanaSignAndSendTransactionFeature,
@@ -18,8 +18,8 @@ import {
     type SolanaSignTransactionMethod,
     type SolanaSignTransactionOutput,
     type SolanaTransactionVersion,
-} from '@solana/wallet-standard-features';
-import { getEndpointForChain } from '@solana/wallet-standard-util';
+} from '@exodus/solana-wallet-standard-features';
+import { getEndpointForChain } from '@exodus/solana-wallet-standard-util';
 import { Connection, Transaction, VersionedTransaction } from '@solana/web3.js';
 import { getWallets } from '@wallet-standard/app';
 import type { Wallet, WalletIcon } from '@wallet-standard/base';

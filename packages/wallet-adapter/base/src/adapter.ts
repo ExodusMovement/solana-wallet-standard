@@ -30,8 +30,8 @@ import {
     SolanaSignMessage,
     SolanaSignTransaction,
     type SolanaSignTransactionFeature,
-} from '@solana/wallet-standard-features';
-import { getChainForEndpoint, getCommitment } from '@solana/wallet-standard-util';
+} from '@exodus/solana-wallet-standard-features';
+import { getChainForEndpoint, getCommitment } from '@exodus/solana-wallet-standard-util';
 import type { Connection, TransactionSignature } from '@solana/web3.js';
 import { PublicKey, Transaction, VersionedTransaction } from '@solana/web3.js';
 import type { WalletAccount } from '@wallet-standard/base';

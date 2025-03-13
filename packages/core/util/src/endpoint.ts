@@ -1,10 +1,10 @@
-import type { SolanaChain } from '@solana/wallet-standard-chains';
+import type { SolanaChain } from '@exodus/solana-wallet-standard-chains';
 import {
     SOLANA_DEVNET_CHAIN,
     SOLANA_LOCALNET_CHAIN,
     SOLANA_MAINNET_CHAIN,
     SOLANA_TESTNET_CHAIN,
-} from '@solana/wallet-standard-chains';
+} from '@exodus/solana-wallet-standard-chains';
 
 /** TODO: docs */
 export const MAINNET_ENDPOINT = 'https://api.mainnet-beta.solana.com';
